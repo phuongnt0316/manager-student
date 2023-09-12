@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class StudentDTO {
-    private int id;
+    private Integer id;
     private String firstName;
     private String lastName;
+    private AdressDTO adressDTO;
 }
