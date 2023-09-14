@@ -70,4 +70,19 @@ public class StudentService {
         List<Adress> adresses=adressRepository.getAddressById(id);
         return addressMapper.toDto(adresses);
     }
+
+    public List<StudentDTO> getStudentBySubject(String subject) {
+        List<Student> students=studentRepository.getStudentBySubject(subject);
+        return studentMapper.toDTO(students);
+    }
+
+    public List<StudentDTO> getStudentByPoint(int point) {
+        List<Student> students=studentRepository.getStudentByPoint(point);
+        return studentMapper.toDTO(students);
+    }
+
+    public List<StudentDTO> getStudentByClass(String classname) {
+        List<Student> students=studentRepository.getStudentByClass(classname);
+        return studentMapper.toDTO(students);
+    }
 }

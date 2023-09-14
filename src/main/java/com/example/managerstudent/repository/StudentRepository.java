@@ -20,5 +20,19 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query(value = "select s from Student s where s.adress.city like concat('%',:address,'%')")
     List<Student> filterByAddress(String address);
+    @Query(nativeQuery = true, value = "select student.* from student,subject,student_subject" +
+            "         where student.id=student_subject.id_student" +
+            "        and student_subject.id_subject=subject.id" +
+            "           and name like CONCAT('%',:subject,'%')")
+    List<Student> getStudentBySubject(String subject);
+
+    @Query(nativeQuery = true,value = "select student.* from student,student_subject" +
+            "                 where student.id=student_subject.id_student" +
+            "           and point >= :point")
+    List<Student> getStudentByPoint(int point);
+    @Query(nativeQuery = true,value = "select student.* from student,classes " +
+            "where student.id_class=classes.id " +
+            "and classes.name like concat('%',:classname,'%')")
+    List<Student> getStudentByClass(String classname);
     //List<Student> findAllByFirstName(String name);
 }

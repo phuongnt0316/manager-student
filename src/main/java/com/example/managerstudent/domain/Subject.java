@@ -10,8 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "adress")
-public class Adress {
+@Table(name = "subject")
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -19,17 +19,7 @@ public class Adress {
 
     @Column(name = "name", length = 250)
     private String name;
-
-    @Column(name = "city", length = 50)
-    private String city;
-
-    @Column(name = "district", length = 50)
-    private String district;
-    @OneToMany
-    @JoinColumn(name = "id_adress")
+    @ManyToMany(mappedBy = "subjects")
     List<Student> students=new ArrayList<>();
-
-
-
 
 }

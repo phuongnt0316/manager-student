@@ -10,6 +10,8 @@ import java.util.List;
 @Component
 public class StudentMapper {
     @Autowired
+    private  SubjectMapper subjectMapper;
+    @Autowired
     private  AddressMapper addressMapper;
     public StudentDTO toDTO(Student entity){
         StudentDTO st= StudentDTO
@@ -17,6 +19,7 @@ public class StudentMapper {
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())
                 .adressDTO(addressMapper.toDto(entity.getAdress()))
+                .subjectsDtos(subjectMapper.toDto(entity.getSubjects()))
                 .build();
         return st;
     }

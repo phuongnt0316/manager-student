@@ -5,7 +5,6 @@ import com.example.managerstudent.DTO.StudentDTO;
 import com.example.managerstudent.domain.Adress;
 import com.example.managerstudent.domain.Student;
 import com.example.managerstudent.service.StudentService;
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,6 +54,21 @@ public class StudentController {
     @GetMapping("/getAddressById")
     List<AdressDTO> getAddressById(@RequestParam("id") int id) {
         List<AdressDTO> dtos = studentService.getAddressById(id);
+        return dtos;
+    }
+    @GetMapping("/getStudentBySubject")
+    List<StudentDTO> getStudentBySubject(@RequestParam("subject") String subject) {
+        List<StudentDTO> dtos = studentService.getStudentBySubject(subject);
+        return dtos;
+    }
+    @GetMapping("/getStudentByPoint")
+    List<StudentDTO> getStudentByPoint(@RequestParam("point") int point) {
+        List<StudentDTO> dtos = studentService.getStudentByPoint(point);
+        return dtos;
+    }
+    @GetMapping("/getStudentByClass")
+    List<StudentDTO> getStudentByClass(@RequestParam("classname") String classname) {
+        List<StudentDTO> dtos = studentService.getStudentByClass(classname);
         return dtos;
     }
 }
